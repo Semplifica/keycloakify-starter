@@ -10,7 +10,7 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "build-keycloak-theme": "npm run build && keycloakify build",
+        "build-keycloak-theme": "npm run build && set \"PATH=.\\.maven\\apache-maven-3.9.13\\bin;%PATH%\" && keycloakify build",
         "storybook": "storybook dev -p 6006",
         "format": "prettier . --write"
     },
