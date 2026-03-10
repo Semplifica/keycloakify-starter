@@ -1,9 +1,8 @@
-import type { DeepPartial } from "keycloakify/tools/DeepPartial";
-import type { KcContext } from "./KcContext";
-import KcPage from "./KcPage";
 import { createGetKcContextMock } from "keycloakify/login/KcContext";
-import type { KcContextExtension, KcContextExtensionPerPage } from "./KcContext";
-import { themeNames, kcEnvDefaults } from "../kc.gen";
+import type { DeepPartial } from "keycloakify/tools/DeepPartial";
+import { kcEnvDefaults, themeNames } from "../kc.gen";
+import type { KcContext, KcContextExtension, KcContextExtensionPerPage } from "./KcContext";
+import KcPage from "./KcPage";
 
 const kcContextExtension: KcContextExtension = {
     themeName: themeNames[0],
@@ -12,12 +11,29 @@ const kcContextExtension: KcContextExtension = {
     }
 };
 const kcContextExtensionPerPage: KcContextExtensionPerPage = {};
+const locale = {
+    currentLanguageTag: "it"
+};
 
 export const { getKcContextMock } = createGetKcContextMock({
     kcContextExtension,
     kcContextExtensionPerPage,
-    overrides: {},
-    overridesPerPage: {}
+    overrides: {
+        locale
+    },
+    overridesPerPage: {
+        "login.ftl": {
+            social: {
+                providers: [
+                    {
+                        alias: "cie",
+                        displayName: "CIE",
+                        loginUrl: "https://idserver.servizicie.interno.gov.it/idp/profile/SAML2/Redirect/SSO"
+                    }
+                ]
+            }
+        }
+    }
 });
 
 export function createKcPageStory<PageId extends KcContext["pageId"]>(params: {
