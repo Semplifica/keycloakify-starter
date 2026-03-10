@@ -35,15 +35,18 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
             headerNode={msg("loginAccountTitle")}
             displayInfo={realm.password && realm.registrationAllowed && !registrationDisabled}
             infoNode={
-                <div id="kc-registration-container">
-                    <div id="kc-registration">
-                        <span>
-                            {msg("noAccount")}{" "}
-                            <a tabIndex={8} href={url.registrationUrl} className="text-blue-600 hover:underline">
-                                {msg("doRegister")}
-                            </a>
-                        </span>
-                    </div>
+                <div id="kc-registration" className="text-center text-sm text-slate-500">
+                    <span>
+                        {msg("noAccount")}{" "}
+                        <a 
+                            tabIndex={8} 
+                            href={url.registrationUrl} 
+                            target={window.location.pathname.includes("iframe.html") ? "_top" : undefined}
+                            className="text-blue-600 font-semibold hover:underline"
+                        >
+                            {msg("doRegister")}
+                        </a>
+                    </span>
                 </div>
             }
         >
@@ -124,7 +127,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         <input
                                             tabIndex={3}
                                             id="password"
-                                            className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                                            className="w-full pl-4 pr-12 py-3 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                                             name="password"
                                             type="password"
                                             autoComplete="current-password"
@@ -160,7 +163,12 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         </label>
                                     )}
                                     {realm.resetPasswordAllowed && (
-                                        <a tabIndex={6} href={url.loginResetCredentialsUrl} className="text-sm text-blue-600 hover:underline">
+                                        <a 
+                                            tabIndex={6} 
+                                            href={url.loginResetCredentialsUrl} 
+                                            target={window.location.pathname.includes("iframe.html") ? "_top" : undefined}
+                                            className="text-sm text-blue-600 hover:underline"
+                                        >
                                             {msg("doForgotPassword")}
                                         </a>
                                     )}
@@ -240,18 +248,21 @@ function PasswordWrapper(props: { passwordInputId: string; children: JSX.Element
             {children}
             <button
                 type="button"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors p-1"
+                className="absolute right-1 inset-y-0 flex items-center justify-center w-12 text-slate-400 hover:text-slate-600 transition-colors z-10 outline-none"
                 aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
                 onClick={toggleIsPasswordRevealed}
             >
                 {isPasswordRevealed ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 overflow-visible" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                        <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                        <path d="M6.61 6.61A13.52 13.52 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                        <line x1="2" x2="22" y1="2" y2="22"/>
                     </svg>
                 ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 overflow-visible" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0z"/>
+                        <circle cx="12" cy="12" r="3"/>
                     </svg>
                 )}
             </button>

@@ -12,6 +12,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         displayInfo = false,
         displayMessage = true,
         headerNode,
+        headerDescriptionNode,
         socialProvidersNode = null,
         infoNode = null,
         documentTitle,
@@ -21,7 +22,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         doUseDefaultCss,
         classes,
         children
-    } = props;
+    } = props as any;
 
     const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
 
@@ -61,7 +62,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                     {headerNode}
                                 </h2>
                                 <p className="text-slate-400 text-sm max-w-[280px] mx-auto leading-relaxed">
-                                    {msg("loginPageInstructions")}
+                                    {headerDescriptionNode ?? msg("loginPageInstructions")}
                                 </p>
                             </div>
                         )}

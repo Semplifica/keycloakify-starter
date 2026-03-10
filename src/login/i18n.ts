@@ -24,7 +24,25 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             doForgotPassword: "Password dimenticata?",
             loginTitle: "Accedi",
             hidePassword: "Nascondi password",
-            showPassword: "Mostra password"
+            showPassword: "Mostra password",
+            registerTitle: "Registrazione",
+            firstName: "Nome",
+            lastName: "Cognome",
+            passwordConfirm: "Conferma password",
+            backToLogin: "Torna alla login",
+            tipoUtente: "Tipo Utente",
+            tipoUtente_1: "cliente dello studio",
+            tipoUtente_2: "dipendente di un cliente di studio",
+            tipoUtente_3: "funzionario di banca",
+            doRegister: "Registrati",
+            alreadyRegistered: "Sei già registrato?",
+            requiredFields: "Campi obbligatori",
+            noAccount: "Non hai un account?",
+            resetPasswordTitle: "Password dimenticata?",
+            emailOrUsername: "Email o nome utente",
+            resetPasswordInstructions: "Inserisci il tuo indirizzo email e ti invieremo le istruzioni su come creare una nuova password.",
+            sendInstructions: "Invia istruzioni",
+            registerPageInstructions: "Compila i campi sottostanti per creare il tuo account."
         },
         en: {
             loginAccountTitle: "Sign in to your account",
@@ -44,7 +62,25 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             doForgotPassword: "Forgot Password?",
             loginTitle: "Login",
             hidePassword: "Hide password",
-            showPassword: "Show password"
+            showPassword: "Show password",
+            registerTitle: "Registration",
+            firstName: "First name",
+            lastName: "Last name",
+            passwordConfirm: "Confirm password",
+            backToLogin: "Back to login",
+            tipoUtente: "User Type",
+            tipoUtente_1: "studio client",
+            tipoUtente_2: "employee of a studio client",
+            tipoUtente_3: "bank officer",
+            doRegister: "Register",
+            alreadyRegistered: "Already registered?",
+            requiredFields: "Required fields",
+            noAccount: "Don't have an account?",
+            resetPasswordTitle: "Forgot Your Password?",
+            emailOrUsername: "Email or username",
+            resetPasswordInstructions: "Enter your username or email address and we will send you instructions on how to create a new password.",
+            sendInstructions: "Submit",
+            registerPageInstructions: "Fill in the fields below to create your account."
         }
     })
     .build();
