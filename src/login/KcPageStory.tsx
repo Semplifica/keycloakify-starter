@@ -77,6 +77,7 @@ export const { getKcContextMock } = createGetKcContextMock({
             }
         },
         "info.ftl": {
+            messageHeader: "Informazione",
             pageRedirectUri: isStorybook
                 ? "/iframe.html?args=&id=login-login-ftl--default&viewMode=story"
                 : "?page=login.ftl"
