@@ -42,7 +42,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             emailOrUsername: "Email o nome utente",
             resetPasswordInstructions: "Inserisci il tuo indirizzo email e ti invieremo le istruzioni su come creare una nuova password.",
             sendInstructions: "Invia istruzioni",
-            registerPageInstructions: "Compila i campi sottostanti per creare il tuo account."
+            registerPageInstructions: "Compila i campi sottostanti per creare il tuo account.",
+            pageExpiredInstructions: "La tua sessione è scaduta per inattività o per una richiesta non valida."
         },
         en: {
             loginAccountTitle: "Sign in to your account",
@@ -80,7 +81,8 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             emailOrUsername: "Email or username",
             resetPasswordInstructions: "Enter your username or email address and we will send you instructions on how to create a new password.",
             sendInstructions: "Submit",
-            registerPageInstructions: "Fill in the fields below to create your account."
+            registerPageInstructions: "Fill in the fields below to create your account.",
+            pageExpiredInstructions: "Your session has expired due to inactivity or an invalid request."
         }
     })
     .build();
