@@ -16,8 +16,24 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
             doUseDefaultCss={doUseDefaultCss}
             classes={classes}
             displayMessage={!messagesPerField.existsError("password", "password-confirm")}
+            displayInfo={isAppInitiatedAction}
             headerNode={msg("updatePasswordTitle")}
             headerDescriptionNode={<></>}
+            infoNode={
+                isAppInitiatedAction ? (
+                    <div className="text-center text-sm">
+                        <button 
+                            type="submit" 
+                            name="cancel-aia" 
+                            value="true" 
+                            form="kc-passwd-update-form"
+                            className="text-blue-600 font-semibold hover:underline bg-transparent border-none cursor-pointer"
+                        >
+                            {msg("doCancel")}
+                        </button>
+                    </div>
+                ) : null
+            }
         >
             <form id="kc-passwd-update-form" action={url.loginAction} method="post" className="space-y-6">
                 <input
@@ -63,18 +79,6 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                     {messagesPerField.existsError("password-confirm") && (
                         <span id="input-error-password-confirm" className="text-xs text-red-500 mt-1 block" aria-live="polite" dangerouslySetInnerHTML={{ __html: kcSanitize(messagesPerField.get("password-confirm")) }} />
                     )}
-                </div>
-
-                <div id="kc-form-options" className="flex items-center justify-between">
-                    <div className="flex items-center">
-                        {isAppInitiatedAction && (
-                            <div className="text-sm">
-                                <button type="submit" name="cancel-aia" value="true" className="text-blue-600 hover:underline">
-                                    {msg("doCancel")}
-                                </button>
-                            </div>
-                        )}
-                    </div>
                 </div>
 
                 <div id="kc-form-buttons" className="pt-4">
