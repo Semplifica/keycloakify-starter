@@ -70,6 +70,9 @@ export const { getKcContextMock } = createGetKcContextMock({
             }
         },
         "error.ftl": {
+            message: {
+                summary: "Messaggio di errore d'esempio inviato dal server Keycloak."
+            },
             url: {
                 loginUrl: isStorybook
                     ? "/iframe.html?args=&id=login-login-ftl--default&viewMode=story"
@@ -78,6 +81,9 @@ export const { getKcContextMock } = createGetKcContextMock({
         },
         "info.ftl": {
             messageHeader: "Informazione",
+            message: {
+                summary: "Messaggio informativo di prova inviato dal server Keycloak."
+            },
             pageRedirectUri: isStorybook
                 ? "/iframe.html?args=&id=login-login-ftl--default&viewMode=story"
                 : "?page=login.ftl"

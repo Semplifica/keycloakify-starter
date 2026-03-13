@@ -1,4 +1,5 @@
 import type { PageProps } from "keycloakify/login/pages/PageProps";
+import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
 
@@ -17,7 +18,9 @@ export default function ErrorPage(props: PageProps<Extract<KcContext, { pageId: 
             displayMessage={false}
             displayInfo={false}
             headerNode={msg("errorTitle")}
-            headerDescriptionNode={message.summary}
+            headerDescriptionNode={
+                <span dangerouslySetInnerHTML={{ __html: kcSanitize(message.summary) }} />
+            }
         >
             <div id="kc-error-message" className="text-center space-y-6 flex flex-col items-center">
                 <div className="bg-red-50 text-red-600 p-4 rounded-full inline-block shadow-sm border border-red-200">

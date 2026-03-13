@@ -20,7 +20,7 @@ export const WithCustomError: Story = {
     args: {
         kcContext: {
             message: {
-                summary: "This is a custom error message for testing purposes."
+                summary: "Questo è un messaggio di errore personalizzato per scopi di test."
             },
             client: {
                 baseUrl: "http://localhost:3000/"
