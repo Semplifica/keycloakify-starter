@@ -30,7 +30,7 @@ export const WithError: Story = {
         kcContext: {
             messagesPerField: {
                 existsError: (field: string) => field === "password" || field === "password-confirm",
-                get: (field: string) => field === "password" ? "Invalid password" : "Passwords do not match",
+                get: (field: string) => field === "password" ? "Password non valida" : "Le password non coincidono",
                 printIfExists: (field: string, cssClass: string) => cssClass
             } as any
         }

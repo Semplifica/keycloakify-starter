@@ -61,6 +61,25 @@ export const { getKcContextMock } = createGetKcContextMock({
                     ? "/iframe.html?args=&id=login-login-ftl--default&viewMode=story"
                     : "?page=login.ftl"
             }
+        },
+        "login-page-expired.ftl": {
+            url: {
+                loginRestartFlowUrl: isStorybook
+                    ? "/iframe.html?args=&id=login-login-ftl--default&viewMode=story"
+                    : "?page=login.ftl"
+            }
+        },
+        "error.ftl": {
+            url: {
+                loginUrl: isStorybook
+                    ? "/iframe.html?args=&id=login-login-ftl--default&viewMode=story"
+                    : "?page=login.ftl"
+            }
+        },
+        "info.ftl": {
+            pageRedirectUri: isStorybook
+                ? "/iframe.html?args=&id=login-login-ftl--default&viewMode=story"
+                : "?page=login.ftl"
         }
     }
 });

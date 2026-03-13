@@ -19,10 +19,8 @@ export const Default: Story = {
 export const WithRequiredActions: Story = {
     args: {
         kcContext: {
-            message: {
-                summary: "You need to perform the following actions to proceed:"
-            },
             requiredActions: ["UPDATE_PASSWORD", "VERIFY_EMAIL"],
+            actionUri: "#",
             client: {
                 baseUrl: "http://localhost:3000/"
             }
