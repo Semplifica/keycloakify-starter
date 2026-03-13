@@ -184,6 +184,7 @@ export default function Register(props: PageProps<Extract<KcContext, { pageId: "
                             <option value="1">{msg("tipoUtente_1")}</option>
                             <option value="2">{msg("tipoUtente_2")}</option>
                             <option value="3">{msg("tipoUtente_3")}</option>
+                            <option value="4">{msg("tipoUtente_4")}</option>
                         </select>
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
