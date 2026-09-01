@@ -11,6 +11,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
         displayInfo = false,
         displayMessage = true,
+        displayRequiredFields = false,
         headerNode,
         headerDescriptionNode,
         socialProvidersNode = null,
@@ -111,6 +112,13 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                                     </button>
                                 </div>
                             </div>
+                        )}
+
+                        {/* Required fields note (displayRequiredFields contract — e.g. first-broker update-profile form) */}
+                        {displayRequiredFields && (
+                            <p className="mb-4 text-xs font-medium uppercase tracking-wider text-slate-400">
+                                {msg("requiredFields")}
+                            </p>
                         )}
 
                         {/* Main Content */}

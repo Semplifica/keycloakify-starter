@@ -17,6 +17,8 @@ const LoginExpired = lazy(() => import("./pages/LoginExpired"));
 const ErrorPage = lazy(() => import("./pages/Error"));
 const Info = lazy(() => import("./pages/Info"));
 const LoginUpdatePassword = lazy(() => import("./pages/LoginUpdatePassword"));
+const UpdateProfile = lazy(() => import("./pages/UpdateProfile"));
+const IdpReviewUserProfile = lazy(() => import("./pages/IdpReviewUserProfile"));
 
 const doMakeUserConfirmPassword = true;
 
@@ -85,7 +87,44 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={true}
                             />
                         );
+                    case "login-update-profile.ftl":
+                        return (
+                            <UpdateProfile
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                                UserProfileFormFields={UserProfileFormFields}
+                                doMakeUserConfirmPassword={doMakeUserConfirmPassword}
+                            />
+                        );
+                    case "idp-review-user-profile.ftl":
+                        return (
+                            <IdpReviewUserProfile
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
                     default:
+                        // keycloakify 11.9.3 has no pageId type for the declarative
+                        // `update-user-profile.ftl` (KC 25 renders it when the realm
+                        // enables the declarative user profile, as in production).
+                        // Reuse the same themed form as the legacy `login-update-profile.ftl`
+                        // (UserProfileFormFields reads kcContext.profile — identical shape).
+                        if ((kcContext as { pageId: string }).pageId === "update-user-profile.ftl") {
+                            const updateProfileContext = kcContext as unknown as Extract<KcContext, { pageId: "login-update-profile.ftl" }>;
+                            return (
+                                <UpdateProfile
+                                    kcContext={updateProfileContext}
+                                    i18n={i18n}
+                                    classes={classes}
+                                    Template={Template}
+                                    doUseDefaultCss={true}
+                                    UserProfileFormFields={UserProfileFormFields}
+                                    doMakeUserConfirmPassword={doMakeUserConfirmPassword}
+                                />
+                            );
+                        }
                         return (
                             <DefaultPage
                                 kcContext={kcContext}

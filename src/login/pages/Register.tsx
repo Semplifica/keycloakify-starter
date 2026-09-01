@@ -168,15 +168,17 @@ export default function Register(props: PageProps<Extract<KcContext, { pageId: "
                     </div>
                 </div>
 
-                {/* Custom field TipoUtente */}
+                {/* Custom field TipoUtente — UPP (profilo dichiarativo) attivo: il campo deve
+                    avere il nome dell'ATTRIBUTO (TipoUtente), non il prefisso legacy
+                    "user.attributes.*" che KC 25 ignora in modalità dichiarativa. */}
                 <div className="space-y-1">
-                    <label htmlFor="user.attributes.TipoUtente" className="block text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                    <label htmlFor="TipoUtente" className="block text-xs font-semibold text-slate-500 uppercase tracking-wider">
                         {msg("tipoUtente")} <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
                         <select
-                            id="user.attributes.TipoUtente"
-                            name="user.attributes.TipoUtente"
+                            id="TipoUtente"
+                            name="TipoUtente"
                             className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
                             defaultValue={(profile as any)?.attributesByName?.TipoUtente?.value ?? ""}
                         >

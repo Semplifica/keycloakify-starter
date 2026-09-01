@@ -81,6 +81,24 @@ export default function LoginUpdatePassword(props: PageProps<Extract<KcContext, 
                     )}
                 </div>
 
+                {isAppInitiatedAction && (
+                    <div className="flex items-center justify-between py-2">
+                        <label className="flex items-center space-x-2 cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                id="logout-sessions"
+                                name="logout-sessions"
+                                value="on"
+                                defaultChecked={true}
+                                className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                            />
+                            <span className="text-sm text-slate-500 group-hover:text-slate-700 transition-colors">
+                                {msg("logoutOtherSessions")}
+                            </span>
+                        </label>
+                    </div>
+                )}
+
                 <div id="kc-form-buttons" className="pt-4">
                     <button
                         className="w-full flex items-center justify-center gap-4 py-4 px-6 bg-[#0066cc] hover:bg-[#0055aa] text-white rounded transition-all shadow-xl hover:shadow-2xl active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"

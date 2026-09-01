@@ -1,5 +1,12 @@
 @import url(./assets/fonts/geist/index.css);
 
+/* keycloakify default login/styles (kcClsx classes) — required for the pages
+   rendered through DefaultPage/UserProfileFormFields (e.g. the CIE first-broker
+   review form) to be styled instead of rendering unstyled/"flat". */
+@import url("keycloakify-dev-resources/login/css/login.css");
+@import url("keycloakify-dev-resources/login/resources-common/lib/patternfly/patternfly.min.css");
+@import url("keycloakify-dev-resources/login/resources-common/lib/patternfly/patternfly-addons.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,4 +31,21 @@ input::-webkit-credentials-auto-fill-button {
     visibility: hidden;
     position: absolute;
     right: 0;
+}
+
+/* Restore the base font size: the keycloakify-dev-resources login/patternfly
+   CSS imported above sets a ~10px root font-size, which shrinks all the
+   `rem`-based Tailwind typography. The browser default is 16px. */
+html {
+    font-size: 16px;
+}
+
+/* Normalize the font size inside form controls: the KC/patternfly css imported
+   above (and the 10px root chain) makes Tailwind's `100%`-inheriting inputs
+   render typed text too small. Force 1rem on form fields. */
+input,
+select,
+textarea,
+button {
+    font-size: 1rem !important;
 }
