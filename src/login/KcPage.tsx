@@ -5,7 +5,6 @@ import type { KcContext } from "./KcContext";
 import Template from "./Template";
 import { useI18n } from "./i18n";
 import "./index.css";
-//import { twMerge } from "tailwind-merge";
 
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
@@ -19,6 +18,9 @@ const Info = lazy(() => import("./pages/Info"));
 const LoginUpdatePassword = lazy(() => import("./pages/LoginUpdatePassword"));
 const UpdateProfile = lazy(() => import("./pages/UpdateProfile"));
 const IdpReviewUserProfile = lazy(() => import("./pages/IdpReviewUserProfile"));
+const LoginIdpLinkConfirm = lazy(() => import("./pages/LoginIdpLinkConfirm"));
+const LoginIdpLinkEmail = lazy(() => import("./pages/LoginIdpLinkEmail"));
+const LoginPassword = lazy(() => import("./pages/LoginPassword"));
 
 const doMakeUserConfirmPassword = true;
 
@@ -105,6 +107,30 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={true}
                             />
                         );
+                    case "login-idp-link-confirm.ftl":
+                        return (
+                            <LoginIdpLinkConfirm
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "login-idp-link-email.ftl":
+                        return (
+                            <LoginIdpLinkEmail
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
+                    case "login-password.ftl":
+                        return (
+                            <LoginPassword
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={true}
+                            />
+                        );
                     default:
                         // keycloakify 11.9.3 has no pageId type for the declarative
                         // `update-user-profile.ftl` (KC 25 renders it when the realm
@@ -142,18 +168,8 @@ export default function KcPage(props: { kcContext: KcContext }) {
     );
 }
 
-const classes = {
-    /* 
-    This is commended out because the same rules are applied in the index.css file
-    and applying the tailwind utility classes in the CSS file is recommended over applying them here.
-    This is because here you're limited in how precisely you can target the DOM elements and manage the specificity. 
-    As you can see here I need to use `!` witch is shorthand for `!important` and this should be avoided if possible.
-    In the index.css I can simply use `body.kcBodyClass` or `.kcBodyClass.kcBodyClass` instead of just `.kcBodyClass` 
-    to increase the specificity and avoid using `!important`.  
-    */
-    //kcBodyClass: twMerge(
-    //    "!bg-[url(./assets/img/background.jpg)] bg-no-repeat bg-center bg-fixed",
-    //    "font-geist"
-    //),
-    //kcHeaderWrapperClass: twMerge("text-3xl font-bold underline")
-} satisfies { [key in ClassKey]?: string };
+// Intentionally empty: the equivalent styling lives in src/login/index.css, where Tailwind
+// utilities are applied with higher specificity via `body.kcBodyClass` (or
+// `.kcBodyClass.kcBodyClass`) instead of the `!important` overrides the `classes` map
+// would require here. The object must stay because it is passed to every page.
+const classes = {} satisfies { [key in ClassKey]?: string };

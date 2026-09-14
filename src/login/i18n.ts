@@ -116,7 +116,15 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             invalidPasswordMinSpecialCharsMessage: "Password non valida: deve contenere almeno {0} caratteri speciali",
             invalidPasswordNotUsernameMessage: "Password non valida: non deve coincidere con il nome utente",
             invalidPasswordNotEmailMessage: "Password non valida: non deve coincidere con l'email",
-            invalidPasswordConfirmMessage: "La conferma della password non coincide"
+            invalidPasswordConfirmMessage: "La conferma della password non coincide",
+            // First-broker account linking: login-idp-link-confirm.ftl / login-idp-link-email.ftl
+            confirmLinkIdpTitle: "Collega il tuo account",
+            confirmLinkIdpDescription: "Esiste già un account dello studio associato a questo indirizzo email.",
+            confirmLinkIdpAccountHint: "Account interessato: {0}",
+            confirmLinkIdpPasswordNotice: "Per collegare la CIE ti verrà chiesta la password che usi normalmente per accedere a questo account.",
+            confirmLinkIdpContinue: "Collega all'account esistente",
+            confirmLinkIdpReviewProfile: "Usa un'altra email",
+            confirmLinkIdpNoticeTitle: "Collegamento dell'account"
         },
         en: {
             loginAccountTitle: "Sign in to your account",
@@ -228,7 +236,15 @@ const { useI18n, ofTypeI18n } = i18nBuilder
             invalidPasswordMinSpecialCharsMessage: "Invalid password: must contain at least {0} special characters",
             invalidPasswordNotUsernameMessage: "Invalid password: must not be equal to the username",
             invalidPasswordNotEmailMessage: "Invalid password: must not be equal to the email",
-            invalidPasswordConfirmMessage: "Password confirmation doesn't match"
+            invalidPasswordConfirmMessage: "Password confirmation doesn't match",
+            // First-broker account linking: login-idp-link-confirm.ftl / login-idp-link-email.ftl
+            confirmLinkIdpTitle: "Link your account",
+            confirmLinkIdpDescription: "A Studio account is already associated with this email address.",
+            confirmLinkIdpAccountHint: "Account concerned: {0}",
+            confirmLinkIdpPasswordNotice: "To link the CIE you will be asked for the password you normally use to sign in to this account.",
+            confirmLinkIdpContinue: "Link to the existing account",
+            confirmLinkIdpReviewProfile: "Use another email",
+            confirmLinkIdpNoticeTitle: "Account linking"
         }
     })
     .build();
