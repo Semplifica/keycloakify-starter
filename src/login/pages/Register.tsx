@@ -179,14 +179,26 @@ export default function Register(props: PageProps<Extract<KcContext, { pageId: "
                         <select
                             id="TipoUtente"
                             name="TipoUtente"
+                            required
                             className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none cursor-pointer"
                             defaultValue={(profile as any)?.attributesByName?.TipoUtente?.value ?? ""}
+                            aria-invalid={messagesPerField.existsError("TipoUtente")}
                         >
                             <option value="" disabled>---</option>
                             <option value="1">{msg("tipoUtente_1")}</option>
                             <option value="2">{msg("tipoUtente_2")}</option>
                             <option value="3">{msg("tipoUtente_3")}</option>
                         </select>
+                        {messagesPerField.existsError("TipoUtente") && (
+                            <span
+                                id="input-error-tipoutente"
+                                className="text-xs text-red-500 mt-1 block"
+                                aria-live="polite"
+                                dangerouslySetInnerHTML={{
+                                    __html: kcSanitize(messagesPerField.get("TipoUtente"))
+                                }}
+                            />
+                        )}
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
